@@ -12,8 +12,9 @@ from dataclasses import dataclass, field
 
 from ollama_client import ollama_client
 from database import get_conversation_history, save_message
-from screen_capture import screen_capture
-from web_browser import web_browser
+# VPS Mode: screen_capture and web_browser disabled
+# from screen_capture import screen_capture
+# from web_browser import web_browser
 from learning_system import learning_system
 
 @dataclass

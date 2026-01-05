@@ -4,10 +4,11 @@ from datetime import datetime
 import time
 import hashlib
 
-from screen_capture import screen_capture
+# VPS Mode: screen_capture and web_browser disabled
+# from screen_capture import screen_capture
 from ollama_client import ollama_client
 from database import save_message
-from web_browser import web_browser
+# from web_browser import web_browser
 
 class AIWatcher:
     """Proactive AI that monitors screen and initiates conversations"""
