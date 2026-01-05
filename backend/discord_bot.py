@@ -12,7 +12,8 @@ from ollama_client import ollama_client
 from database import init_db, save_message, get_conversation_history, clear_conversation_history, get_conversation_count
 from eve_helper import eve_helper
 from vscode_client import vscode_client
-from video_analyzer import video_analyzer
+# VPS Mode: video_analyzer disabled (requires Pillow)
+# from video_analyzer import video_analyzer
 from voice_client import voice_client
 from learning_system import learning_system
 from autonomous_agent import autonomous_agent
