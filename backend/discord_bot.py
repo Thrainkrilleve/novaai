@@ -550,6 +550,25 @@ Be social - say YES if it seems interesting or worth responding to."""
             mention_context = f" (mentioning {', '.join(mentioned_users)})" if mentioned_users else ""
             content = f"{message.author.name}{mention_context} said: {content}"
         
+        # Extract text files from attachments
+        if message.attachments:
+            for attachment in message.attachments:
+                # Check for text file extensions
+                if any(attachment.filename.lower().endswith(ext) for ext in ['.txt', '.md', '.py', '.js', '.json', '.yaml', '.yml', '.xml', '.csv', '.log', '.conf', '.cfg', '.ini']):
+                    try:
+                        import aiohttp
+                        async with aiohttp.ClientSession() as session:
+                            async with session.get(attachment.url) as resp:
+                                if resp.status == 200:
+                                    text_content = await resp.text()
+                                    # Limit to 10k characters to avoid overwhelming context
+                                    if len(text_content) > 10000:
+                                        text_content = text_content[:10000] + "\n... (truncated)"
+                                    content += f"\n\n📄 **File: {attachment.filename}**\n```\n{text_content}\n```"
+                                    print(f"📄 Extracted text file: {attachment.filename} ({len(text_content)} chars)")
+                    except Exception as e:
+                        print(f"⚠️ Failed to download text file: {e}")
+        
         # Extract image from attachments (for vision models)
         image_base64 = None
         if message.attachments:
