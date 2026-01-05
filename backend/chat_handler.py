@@ -19,9 +19,6 @@ nova_config = {
 async def get_browser_context(include_content: bool = True) -> Optional[str]:
     """Get current browser state if browser is active (VPS: Disabled)"""
     return None
-    except Exception as e:
-        print(f"⚠️ Could not get browser context: {e}")
-        return None
 
 def build_system_prompt(user_id: Optional[int] = None) -> dict:
     """
