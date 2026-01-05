@@ -605,7 +605,7 @@ Be social - say YES if it seems interesting or worth responding to."""
                         print(f"⚠️ Failed to download/resize image: {e}")
         
         async with message.channel.typing():
-            await handle_chat(message, content, image_base64)
+            await handle_chat(message, content, image_base64, file_content_added)
     else:
         print(f"🤐 Not responding: {reason}")
 
@@ -2005,7 +2005,7 @@ async def autonomous_command(ctx, action: str = None, capability: str = None):
     
     await ctx.reply(embed=embed)
 
-async def handle_chat(message, content: str, image_base64: Optional[str] = None):
+async def handle_chat(message, content: str, image_base64: Optional[str] = None, file_content_added: bool = False):
     """Handle chat interaction"""
     channel_id = str(message.channel.id)
     
