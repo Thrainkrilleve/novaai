@@ -1,0 +1,23 @@
+{
+  "profile": {},
+  "facts": [
+    {
+      "fact": "boykisser now",
+      "category": "occupation",
+      "learned_at": "2026-01-04T00:36:17.098445",
+      "confidence": 1.0
+    }
+  ],
+  "preferences": {},
+  "stats": {
+    "total_messages": 20,
+    "first_interaction": "2026-01-04T00:34:14.192482",
+    "last_interaction": "2026-01-04T00:49:31.084850",
+    "interaction_types": {
+      "chat": 20
+    }
+  },
+  "topics": {},
+  "patterns": {},
+  "last_updated": "2026-01-04T00:49:31.084858"
+}

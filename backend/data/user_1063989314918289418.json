@@ -1,0 +1,29 @@
+{
+  "profile": {},
+  "facts": [
+    {
+      "fact": "you",
+      "category": "preference",
+      "learned_at": "2026-01-04T00:21:36.622811",
+      "confidence": 1.0
+    },
+    {
+      "fact": "where this story is going",
+      "category": "preference",
+      "learned_at": "2026-01-04T00:55:13.171097",
+      "confidence": 1.0
+    }
+  ],
+  "preferences": {},
+  "stats": {
+    "total_messages": 30,
+    "first_interaction": "2026-01-04T00:20:42.282636",
+    "last_interaction": "2026-01-04T15:23:20.635676",
+    "interaction_types": {
+      "chat": 30
+    }
+  },
+  "topics": {},
+  "patterns": {},
+  "last_updated": "2026-01-04T15:23:20.635689"
+}

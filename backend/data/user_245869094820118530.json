@@ -1,0 +1,41 @@
+{
+  "profile": {},
+  "facts": [
+    {
+      "fact": "utistic",
+      "category": "occupation",
+      "learned_at": "2026-01-04T00:43:44.714714",
+      "confidence": 1.0
+    },
+    {
+      "fact": "a boner",
+      "category": "possession",
+      "learned_at": "2026-01-04T17:35:10.161455",
+      "confidence": 1.0
+    },
+    {
+      "fact": "lready wearing my boxers backwards for easier access",
+      "category": "occupation",
+      "learned_at": "2026-01-04T17:37:27.872955",
+      "confidence": 1.0
+    },
+    {
+      "fact": "your new nickname",
+      "category": "preference",
+      "learned_at": "2026-01-04T17:43:44.455031",
+      "confidence": 1.0
+    }
+  ],
+  "preferences": {},
+  "stats": {
+    "total_messages": 33,
+    "first_interaction": "2026-01-04T00:33:51.088178",
+    "last_interaction": "2026-01-04T17:43:44.455016",
+    "interaction_types": {
+      "chat": 33
+    }
+  },
+  "topics": {},
+  "patterns": {},
+  "last_updated": "2026-01-04T17:43:44.455034"
+}

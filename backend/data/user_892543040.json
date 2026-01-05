@@ -1,0 +1,23 @@
+{
+  "profile": {},
+  "facts": [
+    {
+      "fact": "to use what you do with other users to help improve you",
+      "category": "possession",
+      "learned_at": "2026-01-04T00:01:02.213466",
+      "confidence": 1.0
+    }
+  ],
+  "preferences": {},
+  "stats": {
+    "total_messages": 3,
+    "first_interaction": "2026-01-03T23:59:45.162807",
+    "last_interaction": "2026-01-04T00:01:02.213442",
+    "interaction_types": {
+      "web_chat": 3
+    }
+  },
+  "topics": {},
+  "patterns": {},
+  "last_updated": "2026-01-04T00:01:02.213472"
+}

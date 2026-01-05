@@ -1,0 +1,184 @@
+{
+  "profile": {},
+  "facts": [
+    {
+      "fact": "Here's an interesting fact: Quantum Computing uses qubits (quantum bits) to process information, allowing for exponential scaling and solving complex problems that classical computers can't, such as simulating molecular interactions and breaking certain encryption codes.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T00:58:19.603515",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it's based on qubits (quantum bits), which can exist in multiple states simultaneously, allowing for exponentially faster processing of complex calculations compared to classical computers.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T01:01:15.858512",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it uses qubits (quantum bits) as the basic unit of information, which can exist in multiple states simultaneously (superposition), allowing for faster and more complex processing than classical computers.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:18:01.586754",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it can solve certain problems much faster than classical computers, thanks to its ability to process vast amounts of information simultaneously through quantum superposition and entanglement.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:19:58.172593",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it can process vast amounts of information simultaneously, thanks to the principles of superposition and entanglement, allowing it to solve complex problems that are intractable for classical computers.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:22:45.163849",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that a qubit (quantum bit) can exist in multiple states simultaneously, known as superposition, allowing it to process vast amounts of information in a single operation.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:25:18.742558",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it uses \"qubits\" (quantum bits) which can exist in multiple states simultaneously, allowing for faster and more complex calculations than classical computers, due to the principles of superposition and entanglement.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:27:20.743447",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it's based on a fundamental concept called \"superposition,\" where a qubit (quantum bit) can exist in multiple states simultaneously, allowing a quantum computer to process vast amounts of information in parallel.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T10:32:16.671182",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact is that a photonic quantum computer called Jiuzhang is the first to claim quantum supremacy, achieving this milestone in 2020.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T11:02:18.982802",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact is that a quantum computer called \"Jiuzhang\" has achieved quantum supremacy, becoming the second device in 20 years to demonstrate that it can solve a problem that no classical computer can.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T11:32:21.441597",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact is that a photonic quantum computer called Jiuzhang is the first to claim quantum supremacy, achieving this milestone in 2022 after it had been achieved only once in 20 years.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T12:02:23.917789",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact to remember is that Jiuzhang, a photonic quantum computer, is the first to claim quantum supremacy, previously achieved only once in 20 years, according to Wikipedia.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T12:09:43.013115",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it can perform calculations that are exponentially faster than classical computers for certain problems, such as simulating complex quantum systems and breaking certain encryption codes. This is due to the use of qubits (quantum bits) which can exist in multiple states simultaneously.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T12:39:42.325055",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it exploits \"superposed and entangled states\" to process information, which allows it to solve problems that are too complex for classical computers. This is a fundamental difference between quantum and classical computing.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T13:09:42.731711",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it uses a fundamental aspect of quantum mechanics called \"superposition,\" where a quantum bit (qubit) can exist in multiple states simultaneously, allowing for exponentially faster processing of complex calculations.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T13:39:41.879379",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that a \"qubit\" (quantum bit) is the fundamental unit of quantum information, which can exist in multiple states (0 and 1) simultaneously, unlike a traditional binary bit, allowing for exponentially faster processing and solving complex problems.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T14:09:51.414866",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact: A qubit (quantum bit) is the fundamental unit of quantum computing, and it's a two-state system that can exist in multiple states simultaneously, unlike a classical bit which can only be 0 or 1.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:04:56.086741",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that a \"qubit\" (quantum bit) is a two-state system that can exist in multiple states simultaneously, allowing it to process vast amounts of information exponentially faster than a classical computer.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:09:44.236285",
+      "confidence": 1.0
+    },
+    {
+      "fact": "A qubit (quantum bit) is a fundamental unit of quantum computing, and it's a two-state system that can exist in multiple states simultaneously, unlike a classical bit which can only be 0 or 1. This property is known as superposition.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:12:16.530330",
+      "confidence": 1.0
+    },
+    {
+      "fact": "A qubit (quantum bit) is a two-state quantum-mechanical system that exhibits the peculiarity of quantum mechanics, allowing it to be in multiple states simultaneously, unlike a classical bit that can only be 0 or 1.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:16:38.747765",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it uses \"qubits\" (quantum bits), which can be in multiple states simultaneously, allowing for exponentially faster processing of complex information compared to classical computers.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:20:20.417916",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact to remember about Quantum Computing is that it uses \"qubits\" (quantum bits) instead of regular bits, which can be in multiple states (0, 1, and both 0 and 1 at the same time) simultaneously, allowing for exponentially faster processing of complex calculations.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T15:46:59.429902",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact is that \"Jiuzhang\", a photonic quantum computer, is the first to claim quantum supremacy, achieving this milestone, previously only achieved once in 20 years, in 2022.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T16:05:51.978410",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Supremacy is that Google's Sycamore processor, a 53-qubit quantum computer, achieved this milestone in 2019 by solving a complex mathematical problem that would take a classical supercomputer 10,000 years to solve, demonstrating quantum supremacy over classical computing.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T16:35:54.247577",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it has the potential to solve complex problems that are currently unsolvable with classical computers, such as simulating the behavior of molecules and materials, and cracking certain types of encryption.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T17:05:57.551655",
+      "confidence": 1.0
+    },
+    {
+      "fact": "Quantum Computing is a new paradigm that uses qubits (quantum bits) to perform calculations exponentially faster than classical computers. It leverages quantum entanglement, superposition, and interference to solve complex problems, such as cryptography, optimization, and simulation.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T17:36:00.759339",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about Quantum Computing is that it's based on qubits (quantum bits) that can process multiple calculations simultaneously, unlike classical computers which process one calculation at a time, allowing for exponential speedup in certain types of calculations.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T18:06:09.974990",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact about quantum computing is that it can process vast amounts of information simultaneously, thanks to the principles of superposition and entanglement, which allow quantum computers to perform calculations that would take a classical computer an impractically long time.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T18:36:13.224044",
+      "confidence": 1.0
+    },
+    {
+      "fact": "One interesting fact is that Jiuzhang, a photonic quantum computer, was the first to claim quantum supremacy, achieving it in 2023 after 20 years of only one previous demonstration of this capability.",
+      "category": "autonomous_research",
+      "learned_at": "2026-01-04T19:06:42.970250",
+      "confidence": 1.0
+    }
+  ],
+  "preferences": {},
+  "stats": {},
+  "topics": {},
+  "patterns": {},
+  "last_updated": "2026-01-04T19:06:42.970265"
+}

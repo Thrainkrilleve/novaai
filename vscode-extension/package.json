@@ -1,0 +1,90 @@
+{
+  "name": "nova-vscode-bridge",
+  "displayName": "Nova VS Code Bridge",
+  "description": "Allows Nova AI assistant to interact with VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nova.startServer",
+        "title": "Nova: Start Bridge Server"
+      },
+      {
+        "command": "nova.stopServer",
+        "title": "Nova: Stop Bridge Server"
+      },
+      {
+        "command": "nova.showStatus",
+        "title": "Nova: Show Status"
+      },
+      {
+        "command": "nova.openChat",
+        "title": "Nova: Open Chat",
+        "icon": "$(comment-discussion)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nova-sidebar",
+          "title": "Nova AI",
+          "icon": "$(hubot)"
+        }
+      ]
+    },
+    "views": {
+      "nova-sidebar": [
+        {
+          "type": "webview",
+          "id": "nova.chatView",
+          "name": "Chat with Nova"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Nova Bridge",
+      "properties": {
+        "nova.serverPort": {
+          "type": "number",
+          "default": 3737,
+          "description": "Port for Nova communication server"
+        },
+        "nova.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the bridge server on VS Code startup"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0"
+  }
+}
