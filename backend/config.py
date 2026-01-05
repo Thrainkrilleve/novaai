@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     # Ollama settings
     ollama_host: str = "http://localhost:11434"
     ollama_model: str = "llama3.2-vision"  # Vision-capable model
-    ollama_temperature: float = 0.8  # Balanced creativity
+    ollama_temperature: float = 0.5  # Lower for faster responses
     
     # Database
     database_url: str = "sqlite+aiosqlite:///./chatbot.db"

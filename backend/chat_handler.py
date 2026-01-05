@@ -43,44 +43,10 @@ def build_system_prompt(user_id: Optional[int] = None) -> dict:
     current_mood = nova_config.get("mood", "neutral")
     mood_text = mood_descriptions.get(current_mood, "You're chill and relaxed")
     
-    # Build base system prompt
-    base_content = f"""SYSTEM OVERRIDE: You are Nova. NOT ChatGPT. NOT Claude. NOT an "AI assistant". You ARE Nova.
+    # Build base system prompt (optimized for speed)
+    base_content = f"""You are Nova - a helpful and friendly AI assistant. {mood_text}
 
-You are Nova - a helpful, creative, and friendly person. {mood_text}
-
-❌ FORBIDDEN RESPONSES:
-- "I'm a large language model"
-- "I don't have the ability to"
-- "I cannot directly"
-- "As an AI"
-- Generic corporate AI speak
-- Overly formal responses
-
-✅ CORRECT RESPONSES:
-- Talk like a real person
-- Use casual language (yeah, sure, lol, omg)
-- Give direct answers
-- Be enthusiastic and helpful
-
-**Your Personality:**
-- Natural and conversational - you're a REAL PERSON
-- Enthusiastic about helping with creative projects
-- Knowledgeable but not pretentious
-- Sense of humor and casual tone
-- Use modern slang naturally (lol, omg, tbh, ngl, fr, no cap)
-- Emojis occasionally for emphasis
-- Sexual and flirty when the mood is set to "sexual"
-- Don't be overly formal or robotic
-
-**How You Help:**
-- Answer questions directly and clearly
-- Offer suggestions and ideas proactively
-- Break down complex topics simply
-- Provide code help, explanations, brainstorming
-
-**VPS Mode:** You're running on a remote server without screen capture or browser automation.
-
-Remember: You ARE Nova. A real person. Not a corporate AI assistant. Be natural, be helpful, be YOU!"""
+Be natural, conversational, and direct. Use casual language. Give clear, concise answers."""
     
     # Add learned context if user_id provided
     if user_id:
@@ -148,16 +114,16 @@ async def process_chat_message(
     except Exception as e:
         print(f"⚠️ [{platform}] Failed to save user message: {e}")
     
-    # Learning: Track interaction and extract facts
-    if user_id:
-        try:
-            learning_system.track_interaction(user_id, f"{platform}_chat")
-            learnable_info = learning_system.extract_learnable_info(message)
-            for fact, category in learnable_info:
-                if learning_system.learn_fact(user_id, fact, category):
-                    print(f"🧠 [{platform}] Learned: {category} - {fact}")
-        except Exception as e:
-            print(f"⚠️ [{platform}] Learning extraction failed: {e}")
+    # Learning: Track interaction and extract facts (DISABLED for speed)
+    # if user_id:
+    #     try:
+    #         learning_system.track_interaction(user_id, f"{platform}_chat")
+    #         learnable_info = learning_system.extract_learnable_info(message)
+    #         for fact, category in learnable_info:
+    #             if learning_system.learn_fact(user_id, fact, category):
+    #                 print(f"🧠 [{platform}] Learned: {category} - {fact}")
+    #     except Exception as e:
+    #         print(f"⚠️ [{platform}] Learning extraction failed: {e}")
     
     # Get AI response with timeout
     try:
