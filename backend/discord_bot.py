@@ -558,15 +558,30 @@ Be social - say YES if it seems interesting or worth responding to."""
                     try:
                         import aiohttp
                         import base64
+                        from PIL import Image
+                        import io
                         async with aiohttp.ClientSession() as session:
                             async with session.get(attachment.url) as resp:
                                 if resp.status == 200:
                                     image_bytes = await resp.read()
+                                    
+                                    # Resize image to reduce processing time (max 768px)
+                                    img = Image.open(io.BytesIO(image_bytes))
+                                    max_size = 768
+                                    if img.width > max_size or img.height > max_size:
+                                        img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+                                        print(f"📐 Resized image from original to {img.width}x{img.height}")
+                                    
+                                    # Convert back to bytes
+                                    buffer = io.BytesIO()
+                                    img.save(buffer, format='PNG')
+                                    image_bytes = buffer.getvalue()
+                                    
                                     image_base64 = base64.b64encode(image_bytes).decode('utf-8')
                                     print(f"📷 Extracted image from attachment: {attachment.filename}")
                                     break
                     except Exception as e:
-                        print(f"⚠️ Failed to download image: {e}")
+                        print(f"⚠️ Failed to download/resize image: {e}")
         
         async with message.channel.typing():
             await handle_chat(message, content, image_base64)
