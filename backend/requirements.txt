@@ -9,15 +9,15 @@ python-dotenv>=1.0.1
 pydantic>=2.10.0
 pydantic-settings>=2.6.0
 discord.py-self @ git+https://github.com/dolfies/discord.py-self.git
-audioop-lts>=0.2.2
 
-# Voice capabilities
-pyttsx3>=2.90  # Text-to-Speech (offline)
-gTTS>=2.5.0  # Google Text-to-Speech (online, more reliable)
-openai-whisper  # Speech-to-Text (Whisper)
-PyNaCl>=1.5.0  # Voice encryption for Discord
+# Voice capabilities removed for VPS (no audio hardware):
+# audioop-lts>=0.2.2
+# pyttsx3>=2.90  # Text-to-Speech (offline)
+# gTTS>=2.5.0  # Google Text-to-Speech (online, more reliable)
+# openai-whisper  # Speech-to-Text (Whisper)
+# PyNaCl>=1.5.0  # Voice encryption for Discord
 
-# Removed for VPS deployment (no screen/browser access):
+# Removed for VPS deployment (no screen/browser/audio access):
 # mss>=9.0.1  # Screen capture
 # Pillow>=10.3.0  # Image processing
 # playwright>=1.48.0  # Web browser automation
