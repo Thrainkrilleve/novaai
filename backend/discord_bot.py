@@ -550,8 +550,26 @@ Be social - say YES if it seems interesting or worth responding to."""
             mention_context = f" (mentioning {', '.join(mentioned_users)})" if mentioned_users else ""
             content = f"{message.author.name}{mention_context} said: {content}"
         
+        # Extract image from attachments (for vision models)
+        image_base64 = None
+        if message.attachments:
+            for attachment in message.attachments:
+                if any(attachment.filename.lower().endswith(ext) for ext in ['.png', '.jpg', '.jpeg', '.gif', '.webp']):
+                    try:
+                        import aiohttp
+                        import base64
+                        async with aiohttp.ClientSession() as session:
+                            async with session.get(attachment.url) as resp:
+                                if resp.status == 200:
+                                    image_bytes = await resp.read()
+                                    image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+                                    print(f"📷 Extracted image from attachment: {attachment.filename}")
+                                    break
+                    except Exception as e:
+                        print(f"⚠️ Failed to download image: {e}")
+        
         async with message.channel.typing():
-            await handle_chat(message, content)
+            await handle_chat(message, content, image_base64)
     else:
         print(f"🤐 Not responding: {reason}")
 
