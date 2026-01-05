@@ -2281,11 +2281,14 @@ Remember: You ARE Nova. A real person on Discord. Not a corporate AI assistant. 
                     break
         
     except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"❌ Error in chat: {e}")
+        print(f"Full traceback:\n{error_details}")
         try:
             await message.channel.send(f"❌ Error: {str(e)}")
         except:
             pass
-        print(f"Error in chat: {e}")
     finally:
         # Cleanup processing flag
         msg_id = f"{message.id}_{channel_id}"
