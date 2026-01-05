@@ -157,10 +157,10 @@ async def on_ready():
     print(f'   Proactive Engagement: {"✅ ON" if nova_config.get("proactive_engagement") else "❌ OFF"}')
     print(f'   Personality Mode: {nova_config.get("personality_mode", "unknown")}\n')
     
-    # Start autonomous agent - Nova can now do things on her own!
-    print('🚀 Starting autonomous agent...')
-    asyncio.create_task(autonomous_agent.start())
-    print('✅ Autonomous agent running - Nova is self-directed!\n')
+    # VPS Mode: Autonomous agent disabled (requires web_browser)
+    # print('🚀 Starting autonomous agent...')
+    # asyncio.create_task(autonomous_agent.start())
+    # print('✅ Autonomous agent running - Nova is self-directed!\n')
     
     # Clean up any stale voice connections from previous session
     try:
