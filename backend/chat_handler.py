@@ -15,99 +15,10 @@ nova_config = {
     "mood": "sexual",
 }
 
+# VPS Mode: Browser disabled
 async def get_browser_context(include_content: bool = True) -> Optional[str]:
-    """Get current browser state if browser is active
-    
-    Args:
-        include_content: If True, include actual page content (default: True)
-    """
-    try:
-        # Check if browser is initialized
-        if not web_browser.page:
-            return None
-        
-        # Get page info
-        info = await web_browser.get_page_info()
-        if not info.get("success"):
-            return None
-        
-        # Build context string
-        context = f"""\n\n**CURRENT BROWSER STATE:**
-📄 Page: {info['title']}
-🔗 URL: {info['url']}
-📊 Stats: {info['linkCount']} links, {info['imageCount']} images
-🖼️ Viewport: {info['viewportWidth']}x{info['viewportHeight']}
-📜 Scroll: {info['scrollTop']}/{info['scrollHeight']}px"""
-        
-        # Add actual page content if requested
-        if include_content:
-            try:
-                # Get structured data from page
-                extracted = await web_browser.extract_structured_data()
-                if extracted.get("success"):
-                    headings = extracted.get('headings', [])
-                    paragraphs = extracted.get('paragraphs', [])
-                    
-                    if headings or paragraphs:
-                        context += "\n\n**PAGE CONTENT (You can see this!):**\n"
-                        
-                        # Add headings
-                        if headings:
-                            context += "\nHeadings:\n"
-                            for h in headings[:5]:  # First 5 headings
-                                context += f"- {h.get('level')}: {h.get('text')}\n"
-                            if len(headings) > 5:
-                                context += f"... and {len(headings) - 5} more headings\n"
-                        
-                        # Add first few paragraphs
-                        if paragraphs:
-                            context += "\nFirst paragraphs:\n"
-                            for i, p in enumerate(paragraphs[:3], 1):
-                                # Truncate long paragraphs
-                                p_text = p[:300] + "..." if len(p) > 300 else p
-                                context += f"{i}. {p_text}\n\n"
-                            if len(paragraphs) > 3:
-                                context += f"... and {len(paragraphs) - 3} more paragraphs\n"
-                
-                # Also get links if it's a search results page
-                if 'google.com/search' in info['url']:
-                    links_result = await web_browser.get_links()
-                    if links_result.get('success'):
-                        links = links_result.get('links', [])
-                        # Find search result links
-                        search_links = [l for l in links if l.get('text') and len(l.get('text', '')) > 10][:5]
-                        if search_links:
-                            context += "\n\nSearch Results (clickable):\n"
-                            for i, link in enumerate(search_links, 1):
-                                context += f"{i}. {link.get('text')[:80]}\n   URL: {link.get('href')}\n"
-                
-                # For ANY page, get first 10 links so Nova can answer "what's the second link?"
-                if not ('google.com/search' in info['url']):
-                    links_result = await web_browser.get_links()
-  CRITICAL INSTRUCTIONS - READ CAREFULLY:**
-1. The content above is REAL data from the browser. You can SEE it.
-2. If someone asks "what's the second link?" - LOOK at the "Links on this page" section and read link #2
-3. If someone asks "what's on this page?" - READ the headings and paragraphs shown above
-4. If you DON'T see something listed above, say "I don't see that in my current view"
-5. NEVER make up links, content, or information - only use what you see above
-6. If a user asks about something not shown above, be honest: "I can see the page is open but I need to extract that specific information. Let me know if you want me to use a command to get it."
-
-DO NOT HALLUCINATE. DO NOT GUESS. ONLY USE THE DATA SHOWN ABOVEinks on this page:\n"
-                            for i, link in enumerate(links, 1):
-                                link_text = link.get('text', '(no text)')[:60]
-                                link_href = link.get('href', '')[:80]
-                                context += f"{i}. {link_text}\n   → {link_href}\n"
-                            print(f"    ✅ Added {len(links)} links to context")
-            except Exception as e:
-                print(f"⚠️ Could not fetch page content: {e}")
-        
-        context += """\n
-**IMPORTANT:** The content above is REAL data from the browser.
-You can SEE this page and its content.
-When users ask about the page, reference this actual content!
-Don't make things up - use what you see above."""
-        
-        return context
+    """Get current browser state if browser is active (VPS: Disabled)"""
+    return None
     except Exception as e:
         print(f"⚠️ Could not get browser context: {e}")
         return None
