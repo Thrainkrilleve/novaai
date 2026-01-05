@@ -15,6 +15,17 @@ nova_config = {
     "mood": "sexual",
 }
 
+# Background learning extraction (non-blocking)
+async def extract_learning_async(user_id: int, message: str, platform: str):
+    """Extract learnable info in background without blocking response"""
+    try:
+        learnable_info = learning_system.extract_learnable_info(message)
+        for fact, category in learnable_info:
+            if learning_system.learn_fact(user_id, fact, category):
+                print(f"🧠 [{platform}] Learned: {category} - {fact}")
+    except Exception as e:
+        print(f"⚠️ [{platform}] Learning extraction failed: {e}")
+
 # VPS Mode: Browser disabled
 async def get_browser_context(include_content: bool = True) -> Optional[str]:
     """Get current browser state if browser is active (VPS: Disabled)"""
@@ -114,16 +125,14 @@ async def process_chat_message(
     except Exception as e:
         print(f"⚠️ [{platform}] Failed to save user message: {e}")
     
-    # Learning: Track interaction and extract facts (DISABLED for speed)
-    # if user_id:
-    #     try:
-    #         learning_system.track_interaction(user_id, f"{platform}_chat")
-    #         learnable_info = learning_system.extract_learnable_info(message)
-    #         for fact, category in learnable_info:
-    #             if learning_system.learn_fact(user_id, fact, category):
-    #                 print(f"🧠 [{platform}] Learned: {category} - {fact}")
-    #     except Exception as e:
-    #         print(f"⚠️ [{platform}] Learning extraction failed: {e}")
+    # Learning: Track interaction and extract facts (lightweight, runs after response)
+    if user_id:
+        try:
+            learning_system.track_interaction(user_id, f"{platform}_chat")
+            # Run learning extraction in background to not block response
+            asyncio.create_task(extract_learning_async(user_id, message, platform))
+        except Exception as e:
+            print(f"⚠️ [{platform}] Learning tracking failed: {e}")
     
     # Get AI response with timeout
     try:
