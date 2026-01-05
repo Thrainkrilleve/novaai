@@ -551,6 +551,7 @@ Be social - say YES if it seems interesting or worth responding to."""
             content = f"{message.author.name}{mention_context} said: {content}"
         
         # Extract text files from attachments
+        file_content_added = False
         if message.attachments:
             for attachment in message.attachments:
                 # Check for text file extensions
@@ -560,12 +561,13 @@ Be social - say YES if it seems interesting or worth responding to."""
                         async with aiohttp.ClientSession() as session:
                             async with session.get(attachment.url) as resp:
                                 if resp.status == 200:
-                                    text_content = await resp.text()
-                                    # Limit to 10k characters to avoid overwhelming context
-                                    if len(text_content) > 10000:
-                                        text_content = text_content[:10000] + "\n... (truncated)"
-                                    content += f"\n\n📄 **File: {attachment.filename}**\n```\n{text_content}\n```"
+                                    text_content = await resp.text(encoding='utf-8', errors='ignore')
+                                    # No truncation - send full file
+                                    # Escape backticks to avoid markdown conflicts
+                                    text_content = text_content.replace('```', '\'\'\'')
+                                    content += f"\n\n[Attached file: {attachment.filename}]\n{text_content}"
                                     print(f"📄 Extracted text file: {attachment.filename} ({len(text_content)} chars)")
+                                    file_content_added = True
                     except Exception as e:
                         print(f"⚠️ Failed to download text file: {e}")
         
@@ -2036,7 +2038,9 @@ async def handle_chat(message, content: str, image_base64: Optional[str] = None)
         
         # Get conversation history (excluding system prompts from DB)
         # Use channel_id as session for persistence across bot restarts
-        history = await get_conversation_history(limit=50, session_id=str(channel_id))
+        # Reduce history if file was attached to save context space
+        history_limit = 10 if file_content_added else 50
+        history = await get_conversation_history(limit=history_limit, session_id=str(channel_id))
         # Filter out any old system prompts from history
         history = [msg for msg in history if msg.get("role") != "system"]
         
