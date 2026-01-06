@@ -2131,20 +2131,6 @@ Keep it SHORT (1 sentence), natural, stream-of-consciousness. This is your INTER
         # Send response
         await send_long_message(message, response)
     
-    except TimeoutError as e:
-        print(f"⏱️ Timeout: {e}")
-        # Personality-appropriate timeout messages
-        personality = nova_config.get("personality_mode", "chaotic")
-        timeout_messages = {
-            "chaotic": ["bruh this is taking forever, VPS is cooked rn", "my brain froze lol try again", "timeout, server said no ❌"],
-            "neuro": ["skill issue (server's fault not mine)", "L server, can't process fast enough", "crashed. cope."],
-            "friendly": ["sorry, that took too long - server's struggling rn", "timeout! VPS is being slow, try again?", "oof server couldn't keep up, my bad"],
-            "professional": ["Request timeout - server resources insufficient", "Processing timeout (120s exceeded)", "System overload, please retry"],
-            "flirty": ["sorry babe, server's too slow for me 😏", "kept you waiting huh? server died", "timeout~ VPS can't keep up with me"]
-        }
-        fallback = random.choice(timeout_messages.get(personality, timeout_messages["chaotic"]))
-        await message.channel.send(f"⏱️ {fallback}")
-    
     except Exception as e:
         import traceback
         error_details = traceback.format_exc()
