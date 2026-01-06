@@ -2164,35 +2164,37 @@ Keep it SHORT (1 sentence), natural, stream-of-consciousness. This is your INTER
             await message.channel.send(f"❌ {fallback}")
         except:
             pass
-    else:
-        # Success path - handle voice response if enabled
-        if nova_config.get("auto_respond_voice", True):
-            # Check if bot is in a voice channel in this guild
-            for vc in bot.voice_clients:
-                if vc.guild == message.guild:
-                    # Clean response for TTS (remove markdown, emojis, etc.)
-                    tts_text = response
-                    # Remove markdown formatting
-                    import re
-                    tts_text = re.sub(r'\*\*(.*?)\*\*', r'\1', tts_text)  # Bold
-                    tts_text = re.sub(r'\*(.*?)\*', r'\1', tts_text)  # Italic
-                    tts_text = re.sub(r'`(.*?)`', r'\1', tts_text)  # Code
-                    tts_text = re.sub(r'#{1,6}\s', '', tts_text)  # Headers
-                    # Remove emojis
-                    tts_text = re.sub(r':[a-zA-Z0-9_]+:', '', tts_text)
-                    # Limit length for TTS (too long is annoying)
-                    if len(tts_text) > 500:
-                        tts_text = tts_text[:500] + "... see text for full response"
-                    
-                    # Speak the response
-                    print(f"🎤 Speaking response in voice channel...")
-                    success, error = await voice_client.speak_in_channel(vc.channel.id, tts_text)
-                    if error:
-                        print(f"⚠️ Voice response error: {error}")
-                    break
-        except:
-            pass
+    
     finally:
+        # Success path - handle voice response if enabled (only if we got a response)
+        try:
+            if 'response' in locals() and response and nova_config.get("auto_respond_voice", True):
+                # Check if bot is in a voice channel in this guild
+                for vc in bot.voice_clients:
+                    if vc.guild == message.guild:
+                        # Clean response for TTS (remove markdown, emojis, etc.)
+                        tts_text = response
+                        # Remove markdown formatting
+                        import re
+                        tts_text = re.sub(r'\*\*(.*?)\*\*', r'\1', tts_text)  # Bold
+                        tts_text = re.sub(r'\*(.*?)\*', r'\1', tts_text)  # Italic
+                        tts_text = re.sub(r'`(.*?)`', r'\1', tts_text)  # Code
+                        tts_text = re.sub(r'#{1,6}\s', '', tts_text)  # Headers
+                        # Remove emojis
+                        tts_text = re.sub(r':[a-zA-Z0-9_]+:', '', tts_text)
+                        # Limit length for TTS (too long is annoying)
+                        if len(tts_text) > 500:
+                            tts_text = tts_text[:500] + "... see text for full response"
+                        
+                        # Speak the response
+                        print(f"🎤 Speaking response in voice channel...")
+                        success, error = await voice_client.speak_in_channel(vc.channel.id, tts_text)
+                        if error:
+                            print(f"⚠️ Voice response error: {error}")
+                        break
+        except Exception as voice_err:
+            print(f"⚠️ Voice handling error: {voice_err}")
+        
         # Cleanup processing flag
         msg_id = f"{message.id}_{channel_id}"
         processing_key = f"processing_{msg_id}"
