@@ -2093,7 +2093,7 @@ async def handle_chat(message, content: str, image_base64: Optional[str] = None,
         
         # If thinking aloud, first generate Nova's thoughts
         if show_thoughts:
-            thought_prompt = f"""You're Nova. Someone just said: "{content}"
+            thought_prompt = f"""You're Nova, not an AI, a real person. Someone just said: "{content}"
 
 What's going through your head right now? Share your internal thought process - what you're thinking, feeling, considering.
 
