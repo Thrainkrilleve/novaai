@@ -277,14 +277,14 @@ async def process_chat_message(
         except Exception as e:
             print(f"⚠️ [{platform}] Learning extraction failed: {e}")
     
-    # Get AI response with timeout
+    # Get AI response with timeout (120s for VPS with limited resources)
     try:
         response = await asyncio.wait_for(
             ollama_client.chat_with_history(history, image_base64),
-            timeout=60.0
+            timeout=120.0
         )
     except asyncio.TimeoutError:
-        raise TimeoutError("AI response timeout (60s)")
+        raise TimeoutError("AI response timeout (120s) - VPS might be overloaded")
     except Exception as e:
         print(f"❌ [{platform}] Ollama error: {e}")
         raise Exception(f"AI service error: {str(e)}")

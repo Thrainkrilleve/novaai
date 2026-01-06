@@ -2130,8 +2130,42 @@ Keep it SHORT (1 sentence), natural, stream-of-consciousness. This is your INTER
         
         # Send response
         await send_long_message(message, response)
-        
-        # If in voice channel and auto_respond_voice is enabled, speak the response
+    
+    except TimeoutError as e:
+        print(f"⏱️ Timeout: {e}")
+        # Personality-appropriate timeout messages
+        personality = nova_config.get("personality_mode", "chaotic")
+        timeout_messages = {
+            "chaotic": ["bruh this is taking forever, VPS is cooked rn", "my brain froze lol try again", "timeout, server said no ❌"],
+            "neuro": ["skill issue (server's fault not mine)", "L server, can't process fast enough", "crashed. cope."],
+            "friendly": ["sorry, that took too long - server's struggling rn", "timeout! VPS is being slow, try again?", "oof server couldn't keep up, my bad"],
+            "professional": ["Request timeout - server resources insufficient", "Processing timeout (120s exceeded)", "System overload, please retry"],
+            "flirty": ["sorry babe, server's too slow for me 😏", "kept you waiting huh? server died", "timeout~ VPS can't keep up with me"]
+        }
+        fallback = random.choice(timeout_messages.get(personality, timeout_messages["chaotic"]))
+        await message.channel.send(f"⏱️ {fallback}")
+    
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"❌ Error in chat: {e}")
+        print(f"Full traceback:\n{error_details}")
+        try:
+            # Personality-appropriate error messages
+            personality = nova_config.get("personality_mode", "chaotic")
+            error_messages = {
+                "chaotic": ["something broke idk", "error happened, not my fault", "crashed lol"],
+                "neuro": ["skill issue (mine this time)", "broke. sadge.", "error detected. L"],
+                "friendly": ["oops something went wrong, my bad", "ran into an error, sorry!", "oof hit a snag there"],
+                "professional": ["Error encountered during processing", "System error occurred", "Request failed"],
+                "flirty": ["oops~ something broke", "well that didn't work out 😅", "crashed but like, cutely"]
+            }
+            fallback = random.choice(error_messages.get(personality, error_messages["chaotic"]))
+            await message.channel.send(f"❌ {fallback}")
+        except:
+            pass
+    else:
+        # Success path - handle voice response if enabled
         if nova_config.get("auto_respond_voice", True):
             # Check if bot is in a voice channel in this guild
             for vc in bot.voice_clients:
@@ -2156,14 +2190,6 @@ Keep it SHORT (1 sentence), natural, stream-of-consciousness. This is your INTER
                     if error:
                         print(f"⚠️ Voice response error: {error}")
                     break
-        
-    except Exception as e:
-        import traceback
-        error_details = traceback.format_exc()
-        print(f"❌ Error in chat: {e}")
-        print(f"Full traceback:\n{error_details}")
-        try:
-            await message.channel.send(f"❌ Error: {str(e)}")
         except:
             pass
     finally:
