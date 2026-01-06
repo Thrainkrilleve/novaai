@@ -40,7 +40,10 @@ class OllamaClient:
         if image_base64:
             payload["images"] = [image_base64]
         
-        async with aiohttp.ClientSession() as session:
+        # Create timeout config - no timeout
+        timeout = aiohttp.ClientTimeout(total=None, connect=30, sock_read=None)
+        
+        async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.post(url, json=payload) as response:
                 result = await response.json()
                 return result.get('response', '')
@@ -84,7 +87,10 @@ class OllamaClient:
             }
         }
         
-        async with aiohttp.ClientSession() as session:
+        # Create timeout config - no timeout for total, but keep connection alive
+        timeout = aiohttp.ClientTimeout(total=None, connect=30, sock_read=None)
+        
+        async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.post(url, json=payload) as response:
                 result = await response.json()
                 return result.get('message', {}).get('content', '')
